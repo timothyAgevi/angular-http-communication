@@ -28,6 +28,7 @@ export class DataService {
   }
 
   getAllBooks():Observable <Book[]> {
+    console.log('Get all books')
     return this.http.get<Book[]>('api/books');
   }
 
