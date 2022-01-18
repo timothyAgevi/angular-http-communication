@@ -28,7 +28,7 @@ export class DataService {
   }
 
   getAllBooks():Observable <Book[]> {
-    return ;
+    return this.http.get<Book[]>('api/books');
   }
 
   getBookById(id: number): Book {
