@@ -10,7 +10,7 @@ import { DataService } from 'app/core/data.service';
 })
 export class AddBookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit() { }
 
