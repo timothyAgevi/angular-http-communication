@@ -522,6 +522,13 @@ let EditBookComponent = class EditBookComponent {
             })
         });
     }
+    updateBook(updatedBook) {
+        return this.http.put(`/api/books/${updatedBook.bookID}`, updatedBook, {
+            Headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+                'content-Type': 'application/json'
+            })
+        });
+    }
     setMostPopular() {
         this.dataService.setMostPopularBook(this.selectedBook);
     }

@@ -40,7 +40,13 @@ export class EditBookComponent implements OnInit {
           })
         })
       }
-
+      updateBook(updatedBook:Book):Observable<void>{
+        return this.http.put(`/api/books/${updatedBook.bookID}`,updatedBook,{
+          Headers:new HttpHeaders({
+            'content-Type':'application/json'
+          })
+        })
+      }
 
   setMostPopular(): void {
     this.dataService.setMostPopularBook(this.selectedBook);
