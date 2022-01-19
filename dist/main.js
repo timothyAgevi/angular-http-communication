@@ -539,7 +539,6 @@ let EditBookComponent = class EditBookComponent {
         this.dataService.setMostPopularBook(this.selectedBook);
     }
     saveChanges() {
-        console.warn('Save changes to book not yet implemented.');
     }
 };
 EditBookComponent.ctorParameters = () => [

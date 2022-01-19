@@ -40,6 +40,6 @@ export class EditBookComponent implements OnInit {
   }
 
   saveChanges(): void {
-    console.warn('Save changes to book not yet implemented.');
+    
   }
 }
