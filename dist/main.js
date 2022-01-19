@@ -365,11 +365,13 @@ let DataService = class DataService {
     }
     //geting single book
     getBookById(id) {
-        let getHeaders = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Accept': 'application/json',
-            'Authorization': 'my-token'
+        ;
+        return this.http.get(`/api/books/${id}`, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+                'Accept': 'application/json',
+                'Authorization': 'my-token'
+            })
         });
-        return this.http.get(`/api/books/${id}`);
     }
 };
 DataService.ctorParameters = () => [
