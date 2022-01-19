@@ -5,6 +5,7 @@ import { Book } from 'app/models/book';
 import { DataService } from 'app/core/data.service';
 import { OldBook } from 'app/models/oldBook';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-book',
@@ -33,7 +34,11 @@ export class EditBookComponent implements OnInit {
       )}
 
       addBook(newBook:Book):Observable<Book>{
-        return this.http.post
+        return this.http.post('/api/books',newBook,{
+          Headers:new HttpHeaders({
+            'content-Type':'application/json'
+          })
+        })
       }
 
 
