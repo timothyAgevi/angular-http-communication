@@ -31,8 +31,8 @@ export class DataService {
     console.log('Get all books')
     return this.http.get<Book[]>('/api/books');
   }
-
-  getBookById(id: number): Book {
-    return allBooks.find(book => book.bookID === id);
+//geting single book
+  getBookById(id: number):Observable<Book> {
+    return this.http.get<Book>(`/api/books/${id}`);
   }  
 }

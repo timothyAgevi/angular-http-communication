@@ -363,6 +363,7 @@ let DataService = class DataService {
         console.log('Get all books');
         return this.http.get('/api/books');
     }
+    //geting single book
     getBookById(id) {
         return app_data__WEBPACK_IMPORTED_MODULE_0__.allBooks.find(book => book.bookID === id);
     }
