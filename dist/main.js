@@ -407,7 +407,8 @@ let DashboardComponent = class DashboardComponent {
         this.title = title;
     }
     ngOnInit() {
-        this.dataService.getAllBooks();
+        this.dataService.getAllBooks()
+            .subscribe((data) => this.allBooks = data, (err) => console.log(err), () => console.log('All done getting books'));
         this.allReaders = this.dataService.getAllReaders();
         this.mostPopularBook = this.dataService.mostPopularBook;
         this.title.setTitle(`Book Tracker`);
