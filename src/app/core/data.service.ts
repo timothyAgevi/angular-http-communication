@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 import { allBooks, allReaders } from 'app/data';
 import { Reader } from "app/models/reader";
@@ -33,6 +33,7 @@ export class DataService {
   }
 //geting single book
   getBookById(id: number):Observable<Book> {
+    let getHeaders:HttpHeaders=new HttpHeaders;
     return this.http.get<Book>(`/api/books/${id}`);
   }  
 }
