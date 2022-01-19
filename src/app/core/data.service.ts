@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable,throwError } from 'rxjs';
+import { map, tap,catchError } from 'rxjs/operators';
 
 import { allBooks, allReaders } from 'app/data';
 import { Reader } from "app/models/reader";

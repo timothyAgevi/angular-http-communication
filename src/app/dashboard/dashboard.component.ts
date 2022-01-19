@@ -41,10 +41,7 @@ export class DashboardComponent implements OnInit {
         this.allBooks.splice(index,1)
       },
       (err:any)=>console.log(err)
-    )
-      
-    
-
+    ); 
   }
 
   deleteReader(readerID: number): void {
