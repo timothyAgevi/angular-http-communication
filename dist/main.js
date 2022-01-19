@@ -513,6 +513,9 @@ let EditBookComponent = class EditBookComponent {
         this.dataService.getOldBookById(bookID)
             .subscribe((data) => console.log(`Old Book Title : ${data.bookTitle}`));
     }
+    addBook(newBook) {
+        return this.http.post;
+    }
     setMostPopular() {
         this.dataService.setMostPopularBook(this.selectedBook);
     }

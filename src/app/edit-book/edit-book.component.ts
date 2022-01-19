@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Book } from 'app/models/book';
 import { DataService } from 'app/core/data.service';
 import { OldBook } from 'app/models/oldBook';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-book',
@@ -13,6 +14,7 @@ import { OldBook } from 'app/models/oldBook';
 export class EditBookComponent implements OnInit {
 
   selectedBook: Book;
+  http: any;
 
   constructor(private route: ActivatedRoute,
               private dataService: DataService) { }
@@ -29,6 +31,11 @@ export class EditBookComponent implements OnInit {
       (data:OldBook)=> console.log(`Old Book Title : ${data.bookTitle}`)
     
       )}
+
+      addBook(newBook:Book):Observable<Book>{
+        return this.http.post
+      }
+
 
   setMostPopular(): void {
     this.dataService.setMostPopularBook(this.selectedBook);
