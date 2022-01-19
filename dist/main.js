@@ -453,7 +453,6 @@ let DashboardComponent = class DashboardComponent {
         this.title.setTitle(`Book Tracker`);
     }
     deleteBook(bookID) {
-        console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
     }
     deleteReader(readerID) {
         console.warn(`Delete reader not yet implemented (readerID: ${readerID}).`);
@@ -540,7 +539,7 @@ let EditBookComponent = class EditBookComponent {
     }
     saveChanges() {
         this.dataService.updateBook(this.selectedBook)
-            .subscribe((data) => console.log(`${this.selectedBook.title} was updated sucessfully`), (err) => console.log(err));
+            .subscribe((data) => console.log(`${this.selectedBook.title} updated sucessfully`), (err) => console.log(err));
     }
 };
 EditBookComponent.ctorParameters = () => [

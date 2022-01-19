@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteBook(bookID: number): void {
-    console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
+    
   }
 
   deleteReader(readerID: number): void {
