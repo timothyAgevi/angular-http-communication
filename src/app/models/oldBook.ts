@@ -1,4 +1,4 @@
-export class oldBook{
+export class OldBook{
     bookTitle:string;
     year:number;
 }
