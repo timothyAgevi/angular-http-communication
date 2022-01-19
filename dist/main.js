@@ -371,7 +371,7 @@ let DataService = class DataService {
     }
     getAllBooks() {
         console.log('Getting all books from the server.');
-        return this.http.get('/api/books');
+        return this.http.get('/api/errors/500');
     }
     getBookById(id) {
         return this.http.get(`/api/books/${id}`, {

@@ -32,7 +32,7 @@ export class DataService {
 
   getAllBooks(): Observable<Book[]> {
     console.log('Getting all books from the server.');
-    return this.http.get<Book[]>('/api/books');
+    return this.http.get<Book[]>('/api/errors/500');
   }
 
   getBookById(id: number): Observable<Book> {
