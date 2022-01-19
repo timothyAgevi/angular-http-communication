@@ -539,6 +539,8 @@ let EditBookComponent = class EditBookComponent {
         this.dataService.setMostPopularBook(this.selectedBook);
     }
     saveChanges() {
+        this.dataService.updateBook(this.selectedBook)
+            .subscribe((data) => console.log(`${this.selectedBook.title} was updated sucessfully`), (err) => console.log(err));
     }
 };
 EditBookComponent.ctorParameters = () => [

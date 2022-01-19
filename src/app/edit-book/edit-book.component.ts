@@ -40,6 +40,10 @@ export class EditBookComponent implements OnInit {
   }
 
   saveChanges(): void {
-    
+    this.dataService.updateBook(this.selectedBook)
+    .subscribe(
+      (data:void)=>console.log(`${this.selectedBook.title} was updated sucessfully`),
+      (err:any)=>console.log(err)
+    )
   }
 }
