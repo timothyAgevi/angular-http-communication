@@ -48,6 +48,11 @@ export class EditBookComponent implements OnInit {
         })
       }
 
+      deleteBook(bookID:number):Observable<void>{
+        return this.http.delete(`/api/books/${bookID}`)
+      }
+
+
   setMostPopular(): void {
     this.dataService.setMostPopularBook(this.selectedBook);
   }

@@ -529,6 +529,9 @@ let EditBookComponent = class EditBookComponent {
             })
         });
     }
+    deleteBook(bookID) {
+        return this.http.delete(`/api/books/${bookID}`);
+    }
     setMostPopular() {
         this.dataService.setMostPopularBook(this.selectedBook);
     }
