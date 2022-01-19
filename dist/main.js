@@ -365,7 +365,7 @@ let DataService = class DataService {
     }
     //geting single book
     getBookById(id) {
-        return app_data__WEBPACK_IMPORTED_MODULE_0__.allBooks.find(book => book.bookID === id);
+        return this.http.get(`/api/books/${id}`);
     }
 };
 DataService.ctorParameters = () => [
@@ -493,7 +493,7 @@ let EditBookComponent = class EditBookComponent {
     }
     ngOnInit() {
         let bookID = parseInt(this.route.snapshot.params['id']);
-        this.selectedBook = this.dataService.getBookById(bookID);
+        this.dataService.getBookById(bookID);
     }
     setMostPopular() {
         this.dataService.setMostPopularBook(this.selectedBook);
