@@ -18,7 +18,11 @@ export class AddBookComponent implements OnInit {
     let newBook: Book = <Book>formValues;
     newBook.bookID = 0;
     console.log(newBook);
-    
+    this.dataService.addBook(newBook)
+    .subscribe(
+      (data:Book)=>console.log(data),
+      (err:any)=>console.log
+    )
   }
 
 }

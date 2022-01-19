@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Book } from 'app/models/book';
 import { DataService } from 'app/core/data.service';
 import { OldBook } from 'app/models/oldBook';
-import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-edit-book',
@@ -33,24 +32,7 @@ export class EditBookComponent implements OnInit {
     
       )}
 
-      addBook(newBook:Book):Observable<Book>{
-        return this.http.post('/api/books',newBook,{
-          Headers:new HttpHeaders({
-            'content-Type':'application/json'
-          })
-        })
-      }
-      updateBook(updatedBook:Book):Observable<void>{
-        return this.http.put(`/api/books/${updatedBook.bookID}`,updatedBook,{
-          Headers:new HttpHeaders({
-            'content-Type':'application/json'
-          })
-        })
-      }
-
-      deleteBook(bookID:number):Observable<void>{
-        return this.http.delete(`/api/books/${bookID}`)
-      }
+      
 
 
   setMostPopular(): void {

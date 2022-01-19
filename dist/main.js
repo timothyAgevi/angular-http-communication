@@ -50,6 +50,8 @@ let AddBookComponent = class AddBookComponent {
         let newBook = formValues;
         newBook.bookID = 0;
         console.log(newBook);
+        this.dataService.addBook(newBook)
+            .subscribe((data) => console.log(data), (err) => console.log);
     }
 };
 AddBookComponent.ctorParameters = () => [
@@ -368,12 +370,10 @@ let DataService = class DataService {
         return app_data__WEBPACK_IMPORTED_MODULE_0__.allReaders.find(reader => reader.readerID === id);
     }
     getAllBooks() {
-        console.log('Get all books');
+        console.log('Getting all books from the server.');
         return this.http.get('/api/books');
     }
-    //geting single book
     getBookById(id) {
-        ;
         return this.http.get(`/api/books/${id}`, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
                 'Accept': 'application/json',
@@ -385,8 +385,25 @@ let DataService = class DataService {
         return this.http.get(`/api/books/${id}`)
             .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.map)(b => ({
             bookTitle: b.title,
-            year: b.publicationYear,
+            year: b.publicationYear
         })), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.tap)(classicBook => console.log(classicBook)));
+    }
+    addBook(newBook) {
+        return this.http.post('/api/books', newBook, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    updateBook(updatedBook) {
+        return this.http.put(`/api/books/${updatedBook.bookID}`, updatedBook, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        });
+    }
+    deleteBook(bookID) {
+        return this.http.delete(`/api/books/${bookID}`);
     }
 };
 DataService.ctorParameters = () => [
@@ -497,13 +514,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "EditBookComponent": () => (/* binding */ EditBookComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4762);
 /* harmony import */ var _raw_loader_edit_book_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./edit-book.component.html */ 8367);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 9895);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 9895);
 /* harmony import */ var app_core_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! app/core/data.service */ 3943);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 1841);
-
 
 
 
@@ -520,23 +535,6 @@ let EditBookComponent = class EditBookComponent {
         this.dataService.getOldBookById(bookID)
             .subscribe((data) => console.log(`Old Book Title : ${data.bookTitle}`));
     }
-    addBook(newBook) {
-        return this.http.post('/api/books', newBook, {
-            Headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
-                'content-Type': 'application/json'
-            })
-        });
-    }
-    updateBook(updatedBook) {
-        return this.http.put(`/api/books/${updatedBook.bookID}`, updatedBook, {
-            Headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
-                'content-Type': 'application/json'
-            })
-        });
-    }
-    deleteBook(bookID) {
-        return this.http.delete(`/api/books/${bookID}`);
-    }
     setMostPopular() {
         this.dataService.setMostPopularBook(this.selectedBook);
     }
@@ -545,11 +543,11 @@ let EditBookComponent = class EditBookComponent {
     }
 };
 EditBookComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.ActivatedRoute },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__.ActivatedRoute },
     { type: app_core_data_service__WEBPACK_IMPORTED_MODULE_1__.DataService }
 ];
-EditBookComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+EditBookComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
         selector: 'app-edit-book',
         template: _raw_loader_edit_book_component_html__WEBPACK_IMPORTED_MODULE_0__.default
     })
