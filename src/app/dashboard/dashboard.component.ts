@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dataService.getAllBooks()
     .subscribe(
-      (data:Book[]|BookTrackerError)=>this.allBooks=<Book[] |BookTrackerError>data,
-      (err:BookTrackerError)=>console.log(err),
+      (data:Book[]|BookTrackerError)=>this.allBooks=<Book[]>data,
+      (err:BookTrackerError)=>console.log(err.friendlyMessage),
       ()=>console.log('All done getting books')
     );
     this.allReaders = this.dataService.getAllReaders();
